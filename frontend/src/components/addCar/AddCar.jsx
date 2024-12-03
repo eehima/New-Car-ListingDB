@@ -12,6 +12,8 @@ const AddCar = () => {
 
   const navigate = useNavigate();
 
+  const apiUrl = import.meta.env.VITE_API_URL;
+  console.log("apiUrl", apiUrl);
   const handlleSubmit = async (e) => {
     e.preventDefault();
 

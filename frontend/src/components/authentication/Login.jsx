@@ -39,12 +39,13 @@ function Login({setAuthToken, setLoginUser}) {
     };
 
     // handle form submit
+    const apiUrl = import.meta.env.VITE_API_URL;
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         // send data to backend
         try {
-            const response = await fetch("http://localhost:4000/api/auth/login", {
+            const response = await fetch(`${apiUrl}/api/auth/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

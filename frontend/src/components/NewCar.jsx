@@ -35,10 +35,10 @@ const NewCar = () => {
     const [loading, setLoading] = useState(false);
 
 
-
+    const apiUrl = import.meta.env.VITE_API_URL;
     const fetchCar = async () => {
         setLoading(true);
-        const url = "http://localhost:4000/api/cars";
+        const url = `${apiUrl}/api/cars`;
 
         try {
             const response = await fetch(url, {

@@ -45,13 +45,14 @@ function Register() {
         });
     };
 
+    const apiUrl = import.meta.env.VITE_API_URL;
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
 
         // send form data to server
         try {
-            const response = await fetch("http://localhost:4000/api/auth/signup", {
+            const response = await fetch(`${apiUrl}/api/auth/signup`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
