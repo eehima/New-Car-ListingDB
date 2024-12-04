@@ -3,6 +3,7 @@ import { useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useNavigate } from "react-router-dom";
+import { ClipLoader } from "react-spinners";
 
 function Login({setAuthToken, setLoginUser}) {
     const styles = {
@@ -14,6 +15,7 @@ function Login({setAuthToken, setLoginUser}) {
             color: "blue"
         }
     };
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     // form data state
     const [show, setShow] = useState(false);
@@ -23,6 +25,7 @@ function Login({setAuthToken, setLoginUser}) {
     });
     const toggleShow = () => {
         setShow(!show);
+        setLoading(true);
     }
 
     // handle form data change
@@ -58,10 +61,10 @@ function Login({setAuthToken, setLoginUser}) {
                 const { authToken } = data;
                 localStorage.setItem("authToken", authToken);
                 console.log(data);
-                alert("Login successful");
+                // alert("Login successful");
                 handleClear();
 
-                navigate("/listing");
+                navigate("/home");
             };
         } catch (error) {
             console.error(error);
@@ -97,7 +100,17 @@ function Login({setAuthToken, setLoginUser}) {
                     <Form.Check type="checkbox" label="Remember me" />
                 </Form.Group>
                 <Button variant="primary" type="submit">
-                    Login
+                    {loading ? (
+                        <ClipLoader
+                            color="#fff"
+                            loading={loading}
+                            size={20}
+                            aria-label="Loading Spinner"
+                            data-testid="loader"
+                        />
+                    ) : (
+                        "Login"
+                    )}
                 </Button>
             </Form>
         </div>
