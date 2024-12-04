@@ -64,7 +64,7 @@ function Login({setAuthToken, setLoginUser}) {
                 // alert("Login successful");
                 handleClear();
 
-                navigate("/home");
+                navigate("/");
             };
         } catch (error) {
             console.error(error);
