@@ -28,7 +28,7 @@ const AddCar = () => {
 
     // send to backend
     try {
-      const response =await fetch("http://localhost:4000/api/cars", {
+      const response =await fetch(`${apiUrl}/api/cars`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
